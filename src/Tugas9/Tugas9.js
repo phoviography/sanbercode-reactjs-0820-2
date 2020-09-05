@@ -35,7 +35,6 @@ class Tugas9 extends React.Component {
                         </tr>
                     </table>
                 </div>
-
             </div>
         )
     }
