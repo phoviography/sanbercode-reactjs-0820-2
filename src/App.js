@@ -1,41 +1,13 @@
 import React from 'react';
 import './App.css';
+import Tugas9 from './Tugas9/Tugas9';
+import Tugas10 from './Tugas10/Tugas10';
 
 function App() {
   return (
     <div className="App">
-      <header>
-        <h1 style={{ textAlign: "center" }}>Form Pembelian Buah</h1>
-      </header>
-      <div>
-        <table style={{textAlign:"left"}}>
-          <tr>
-            <th><label>Nama Pelanggan</label></th>
-            <th><input placeholder="Nama pelanggan"></input></th>
-          </tr>
-          <tr>
-            <th><label>Daftar item</label></th>
-            <th>
-              <input type="checkbox"></input>
-              <label>Semangka</label><br/>
-              <input type="checkbox"></input>
-              <label>Jeruk</label><br/>
-              <input type="checkbox"></input>
-              <label>Nanas</label><br/>
-              <input type="checkbox"></input>
-              <label>Salak</label><br/>
-              <input type="checkbox"></input>
-              <label>Anggur</label><br/>
-            </th>
-          </tr>
-          <tr>
-            <td>
-              <button style={{borderRadius: "20px"}}>Kirim</button>
-            </td>
-          </tr>
-        </table>
-      </div>
-
+      <Tugas9/>
+      <Tugas10/>
     </div>
   );
 }
