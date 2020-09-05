@@ -10,3 +10,12 @@ td {
   border: 1px solid black;
   border-collapse: collapse;
 }
+
+.TabelBuah th {
+  background-color: lightgray;
+}
+
+.TabelBuah td {
+  text-align: left;
+  background-color: lightsalmon;
+}
