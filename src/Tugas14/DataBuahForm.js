@@ -1,11 +1,11 @@
-import React, { useContext, useState } from "react"
+import React, { useContext } from "react"
 import axios from "axios"
 
 import { DataBuahContext } from "./DataBuahContext"
 
 const DataBuahForm = () => {
-    const [input, setInput] = useState({ name: "", price: 0, weight: 0, id: null })
-    const [dataBuah, setDataBuah] = useContext(DataBuahContext)
+    // const [input, setInput] = useState({ name: "", price: 0, weight: 0, id: null })
+    const [dataBuah, setDataBuah, input, setInput] = useContext(DataBuahContext)
 
     const handleChange = (event) => {
         let typeOfInput = event.target.name
@@ -53,10 +53,10 @@ const DataBuahForm = () => {
         } else {
             axios.put(`http://backendexample.sanbercloud.com/api/fruits/${input.id}`, { name, price, weight: input.weight })
                 .then(() => {
-                    let dataBuah = dataBuah.find(el => el.id === input.id)
-                    dataBuah.name = name
-                    dataBuah.price = price
-                    dataBuah.weight = input.weight
+                    let dataBuahEdit = dataBuah.find(el => el.id === input.id)
+                    dataBuahEdit.name = name
+                    dataBuahEdit.price = price
+                    dataBuahEdit.weight = input.weight
                     setDataBuah([...dataBuah])
                 })
         }

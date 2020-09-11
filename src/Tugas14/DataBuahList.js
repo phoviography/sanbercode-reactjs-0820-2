@@ -1,17 +1,44 @@
-import React, { useContext } from "react"
+import React, { useContext, useEffect } from "react"
+import axios from "axios"
+
 import { DataBuahContext } from "./DataBuahContext"
 
 import './DataBuahList.css'
 
 const DataBuahList = () => {
-    const [dataBuah] = useContext(DataBuahContext)
+    const [dataBuah, setDataBuah, input, setInput] = useContext(DataBuahContext)
+
+    useEffect( () => {
+        if (dataBuah === null){
+          axios.get(`http://backendexample.sanbercloud.com/api/fruits`)
+          .then(res => {
+            setDataBuah(res.data.map(el=>{ return {id: el.id, name: el.name, price: el.price, weight: el.weight }} ))
+          })
+        }
+      }, [dataBuah, setDataBuah])
+
+      
+      const handleDelete = (event) => {
+        let idDataBuah = parseInt(event.target.value)
+    
+        let newdataBuah = dataBuah.filter(el => el.id !== idDataBuah)
+    
+        axios.delete(`http://backendexample.sanbercloud.com/api/fruits/${idDataBuah}`)
+        .then(res => {
+          console.log(res)
+        })
+              
+        setDataBuah([...newdataBuah])
+        
+      }
+      
+      const handleEdit = (event) =>{
+        let idDataBuah = parseInt(event.target.value)
+        let dataBuahEdit = dataBuah.find(x=> x.id === idDataBuah)
+        setInput({name: dataBuahEdit.name, price: dataBuahEdit.price, weight: dataBuahEdit.weight, id: idDataBuah})
+  }
 
     return (
-        // <ul>
-        //     {dataBuah.map(el => {
-        //         return <li>name: {el.name} {el.lengthOfTime} minutes</li>
-        //     })}
-        // </ul>
         <div className="HargaBuah">
             <div className="TabelHargaBuah">
                 <h1>Tabel Harga Buah</h1>
@@ -35,9 +62,8 @@ const DataBuahList = () => {
                                         <td>{val.price}</td>
                                         <td>{val.weight} gram</td>
                                         <td className="buttonAction">
-                                            <button class="button button1">Edit</button>
-                                            {/* <button className="button button2" onClick={handleDelete} value={index}>Delete</button> */}
-                                            {/* <button className="button button2" onClick={() => this.handleDelete(val)}>Delete</button> */}
+                                            <button className="button button1" onClick={handleEdit} value={val.id}>Edit</button>
+                                            <button className="button button2" onClick={handleDelete} value={val.id}>Delete</button>
                                         </td>
                                     </tr>
                                 )
@@ -45,18 +71,6 @@ const DataBuahList = () => {
                         }
                     </tbody>
                 </table>
-                <br />
-                <br />
-                {/* <form onSubmit={submitForm}>
-                    <h2>Tambah Buah</h2>
-                    <p>Nama</p>
-                    <input required type="text" className="namaBuah" value={input.inputName} onChange={changeInputNama} /> <br/>
-                    <p>Harga</p>
-                    <input required type="text" className="namaBuah" value={input.inputName} onChange={changeInputHarga} /> <br/>
-                    <p>Berat</p>
-                    <input required type="text" className="namaBuah" value={input.inputName} onChange={changeInputBerat} /> <br/>
-                    <button>Save</button>
-                </form> */}
             </div>
         </div>
     )
