@@ -7,8 +7,7 @@ const Tugas13 = () => {
     const [errorMessage, setErrorMessage] = useState()
 
     useEffect(() => {
-        const url = 'http://backendexample.sanbercloud.com/api/fruits'
-        axios.get(url)
+        axios.get(`http://backendexample.sanbercloud.com/api/fruits`)
             .then(res => {
                 setDataHargaBuah(res.data)
             })
@@ -16,7 +15,53 @@ const Tugas13 = () => {
                 setError(true)
                 setErrorMessage(error.message)
             })
+        axios.delete('http://backendexample.sanbercloud.com/api/fruits/:id')
+            .then(res => {
+                console.log(res);
+                console.log(res.data);
+            })
     }, [])
+
+    // const handleDelete = (taskToDelete) => {
+    //     const newArray = setDataHargaBuah.filter(dataBuah => dataBuah !== taskToDelete);
+    //     this.setState({ dataHargaBuah: newArray });
+    // }
+
+    // const handleDelete = (event) => {
+    //     let index = event.target.value
+    //     let newDataHargaBuah = dataHargaBuah
+    //     let editedDataHargaBuah = newDataHargaBuah[indexOfForm]
+    //     newDataHargaBuah.splice(index, 1)
+
+    //     if (editedDataHargaBuah !== undefined) {
+    //         var newIndex = newDataHargaBuah.findIndex((el) => el === editedDataHargaBuah)
+    //         setDataHargaBuah([...newDataHargaBuah])
+    //         setIndexOfForm(newIndex)
+
+    //     } else {
+
+    //         setDataHargaBuah([...newDataHargaBuah])
+    //     }
+
+    // }
+
+    // const changeInputNama = (event) => {
+    //     let value = event.target.value
+    //     console.log(value);
+    //     setInput({...input, inputNama:value})
+    // }
+
+    // const changeInputHarga = (event) => {
+    //     let value = event.target.value
+    //     console.log(value);
+    //     setInput({...input, inputHarga:value})
+    // }
+
+    // const changeInputBerat = (event) => {
+    //     let value = event.target.value
+    //     console.log(value);
+    //     setInput({...input, inputBerat:value})
+    // }
 
     return (
         <div className="HargaBuah">
@@ -46,7 +91,8 @@ const Tugas13 = () => {
                                                 <td>{val.weight} gram</td>
                                                 <td className="buttonAction">
                                                     <button class="button button1">Edit</button>
-                                                    <button className="button button2" onClick={() => this.handleDelete(val)}>Delete</button>
+                                                    {/* <button className="button button2" onClick={handleDelete} value={index}>Delete</button> */}
+                                                    {/* <button className="button button2" onClick={() => this.handleDelete(val)}>Delete</button> */}
                                                 </td>
                                             </tr>
                                         )
@@ -55,9 +101,9 @@ const Tugas13 = () => {
                         }
                     </tbody>
                 </table>
-                <br/>
-                <br/>
-                <form onSubmit={submitForm}>
+                <br />
+                <br />
+                {/* <form onSubmit={submitForm}>
                     <h2>Tambah Buah</h2>
                     <p>Nama</p>
                     <input required type="text" className="namaBuah" value={input.inputName} onChange={changeInputNama} /> <br/>
@@ -66,7 +112,7 @@ const Tugas13 = () => {
                     <p>Berat</p>
                     <input required type="text" className="namaBuah" value={input.inputName} onChange={changeInputBerat} /> <br/>
                     <button>Save</button>
-                </form>
+                </form> */}
             </div>
         </div>
     );
