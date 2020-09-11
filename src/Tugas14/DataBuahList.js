@@ -27,23 +27,21 @@ const DataBuahList = () => {
                     </thead>
                     <tbody>
                         {
-                            (
-                                dataBuah !== null && dataBuah.map((val, index) => {
-                                    return (
-                                        <tr>
-                                            <td>{index + 1}</td>
-                                            <td>{val.name}</td>
-                                            <td>{val.lengthOfTime}</td>
-                                            <td>{val.weight} gram</td>
-                                            <td className="buttonAction">
-                                                <button class="button button1">Edit</button>
-                                                {/* <button className="button button2" onClick={handleDelete} value={index}>Delete</button> */}
-                                                {/* <button className="button button2" onClick={() => this.handleDelete(val)}>Delete</button> */}
-                                            </td>
-                                        </tr>
-                                    )
-                                })
-                            )
+                            dataBuah !== null && dataBuah.map((val, index) => {
+                                return (
+                                    <tr>
+                                        <td>{index + 1}</td>
+                                        <td>{val.name}</td>
+                                        <td>{val.price}</td>
+                                        <td>{val.weight} gram</td>
+                                        <td className="buttonAction">
+                                            <button class="button button1">Edit</button>
+                                            {/* <button className="button button2" onClick={handleDelete} value={index}>Delete</button> */}
+                                            {/* <button className="button button2" onClick={() => this.handleDelete(val)}>Delete</button> */}
+                                        </td>
+                                    </tr>
+                                )
+                            })
                         }
                     </tbody>
                 </table>

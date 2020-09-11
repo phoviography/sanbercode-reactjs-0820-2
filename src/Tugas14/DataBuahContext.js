@@ -11,7 +11,7 @@ export const DataBuahProvider = props => {
   //   { name: "Spiderman", lengthOfTime: 124},
   // ]);
 
-  const [dataBuah, setDataBuah] = useState([])
+  const [dataBuah, setDataBuah] =  useState(null)
   const [input, setInput]  =  useState({name: "", price: "", weight: 0, id: null})
 
   useEffect( () => {
@@ -44,7 +44,7 @@ export const DataBuahProvider = props => {
   }
 
   return (
-    <DataBuahContext.Provider value={[dataBuah, setDataBuah], [input, setInput]}>
+    <DataBuahContext.Provider value={[dataBuah, setDataBuah]}>
       {props.children}
     </DataBuahContext.Provider>
   );

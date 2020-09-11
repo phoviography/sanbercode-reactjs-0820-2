@@ -4,41 +4,38 @@ import axios from "axios"
 import { DataBuahContext } from "./DataBuahContext"
 
 const DataBuahForm = () => {
-    const [name, setName] = useState("")
-    const [lengthOfTime, setLengthOfTime] = useState(0)
-    const [input, setInput] = useState({ name: "", price: "", weight: 0, id: null })
+    const [input, setInput] = useState({ name: "", price: 0, weight: 0, id: null })
     const [dataBuah, setDataBuah] = useContext(DataBuahContext)
 
-    const handleChange = (event) =>{
+    const handleChange = (event) => {
         let typeOfInput = event.target.name
-    
-        switch (typeOfInput){
-          case "name":
-          {
-            setInput({...input, name: event.target.value});
-            break
-          }
-          case "price":
-          {
-            setInput({...input, price: event.target.value});
-            break
-          }
-          case "weight":
-          {
-            setInput({...input, weight: event.target.value});
-              break
-          }
-        default:
-          {break;}
+
+        switch (typeOfInput) {
+            case "name":
+                {
+                    setInput({ ...input, name: event.target.value });
+                    break
+                }
+            case "price":
+                {
+                    setInput({ ...input, price: event.target.value });
+                    break
+                }
+            case "weight":
+                {
+                    setInput({ ...input, weight: event.target.value });
+                    break
+                }
+            default:
+                { break; }
         }
-      }
+    }
 
     const handleSubmit = (event) => {
-        // menahan submit
         event.preventDefault()
 
         let name = input.name
-        let price = input.price.toString()
+        let price = input.price
 
 
         if (input.id === null) {
@@ -65,7 +62,7 @@ const DataBuahForm = () => {
         }
 
         // reset input form to default
-        setInput({ name: "", price: "", weight: 0, id: null })
+        setInput({ name: "", price: 0, weight: 0, id: null })
 
     }
 
