@@ -4,7 +4,6 @@ import axios from "axios"
 import { DataBuahContext } from "./DataBuahContext"
 
 const DataBuahForm = () => {
-    // const [input, setInput] = useState({ name: "", price: 0, weight: 0, id: null })
     const [dataBuah, setDataBuah, input, setInput] = useContext(DataBuahContext)
 
     const handleChange = (event) => {
